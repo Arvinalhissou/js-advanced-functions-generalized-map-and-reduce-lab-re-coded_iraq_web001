@@ -1,18 +1,15 @@
 // Add your functions here
 
-const map = function(array, callback){
-    let newArray = [];
-    for (let i = 0; i < array.length; i++ ){
-        newArray.push(callback(array[i]))
-    }
-    return newArray;
-} 
+const map = function(array, callback) {
+    let newArray = []
+    array.forEach(item => newArray.push(callback(item)))
+    return newArray
+}
 
-const reduce = function(array, callback, initial){
-    let total = initial ? initial : array[0];
-    let i = initial ? 0 : 1;
-    for(; i < array.length; i++){
-        total = callback(array[i], total);
+const reduce = function(array, callback, starting) {
+    let result = starting ? starting : array[0]
+    for (let i = starting ? 0 : 1; i < array.length; i++) {
+        result = callback(array[i], result)
     }
-    return total
-} 
+    return result
+}
